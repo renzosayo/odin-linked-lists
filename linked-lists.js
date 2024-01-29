@@ -42,7 +42,7 @@ class LinkedList {
     for (let i = 0; i < index; i++) {
       temp = temp.nextNode;
     }
-    return temp.value;
+    return temp;
   }
 
   pop () {
@@ -81,6 +81,23 @@ class LinkedList {
       temp = temp.nextNode;
     }
     return string + 'null';
+  }
+
+  insertAt (value, index) {
+    let prevNode = this.at(index - 1);
+    let newNode = new Node(value);
+    newNode.nextNode = prevNode.nextNode;
+    prevNode.nextNode = newNode;
+  }
+
+  removeAt (index) {
+    if (index === 0) {
+      this.listHead = this.listHead.nextNode;
+    } else {
+      let prevNode = this.at(index - 1);
+      let currNode = this.at(index);
+      prevNode.nextNode = currNode.nextNode;
+    }
   }
 }
 
